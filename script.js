@@ -1,20 +1,18 @@
-// Function to handle search
 function handleSearch() {
     let searchInput = document.getElementById("searchBar").value.toLowerCase();
     let message = document.getElementById("searchMessage");
 
     if (searchInput.includes("beach")) {
-        message.innerHTML = "Check out our top beach destinations!";
+        message.innerHTML = "🏖️ Check out our top beach destinations!";
     } else if (searchInput.includes("temple")) {
-        message.innerHTML = "Explore our recommended temple destinations!";
-    } else if (searchInput) {
-        message.innerHTML = "Searching for: " + searchInput;
+        message.innerHTML = "🏯 Explore our recommended temple destinations!";
+    } else if (searchInput.trim()) {
+        message.innerHTML = "🔎 Searching for: " + searchInput;
     } else {
         message.innerHTML = "";
     }
 }
 
-// Function to validate contact form
 function validateForm(event) {
     event.preventDefault();
     
@@ -24,20 +22,20 @@ function validateForm(event) {
     let errorMsg = document.getElementById("errorMessage");
 
     if (name === "" || email === "" || message === "") {
-        errorMsg.innerHTML = "All fields are required!";
+        errorMsg.innerHTML = "⚠️ All fields are required!";
         return false;
     }
 
-    alert("Message sent successfully!");
+    alert("✅ Message sent successfully!");
     document.getElementById("contactForm").reset();
     errorMsg.innerHTML = "";
     return true;
 }
 
-// Event listeners
 document.addEventListener("DOMContentLoaded", function () {
-    let searchBtn = document.getElementById("searchBtn");
-    let contactForm = document.getElementById("contactForm");
+    const searchBtn = document.getElementById("searchBtn");
+    const contactForm = document.getElementById("contactForm");
+    const themeBtn = document.getElementById("toggleTheme");
 
     if (searchBtn) {
         searchBtn.addEventListener("click", handleSearch);
@@ -45,5 +43,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (contactForm) {
         contactForm.addEventListener("submit", validateForm);
+    }
+
+    if (themeBtn) {
+        themeBtn.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            themeBtn.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+        });
     }
 });

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - TravelBloom</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -12,14 +13,14 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="contact.html" class="active">Contact Us</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="contact">
         <h1>Contact Us</h1>
-        <form action="#" method="POST">
+        <form id="contactForm">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -29,6 +30,7 @@
             <label for="message">Message:</label>
             <textarea id="message" name="message" rows="4" required></textarea>
 
+            <p id="errorMessage" class="error-message"></p>
             <button type="submit">Send Message</button>
         </form>
     </section>
@@ -36,5 +38,7 @@
     <footer>
         <p>&copy; 2025 TravelBloom. All rights reserved.</p>
     </footer>
+    
+    <script src="script.js"></script>
 </body>
 </html>

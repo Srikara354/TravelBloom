@@ -1,21 +1,47 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
+:root {
+    --bg-color: #f5f5f5;
+    --text-color: #222;
+    --nav-color: #0077b6;
+    --accent-color: #ff5733;
+    --accent-hover: #c70039;
+    --card-bg: white;
+    --footer-bg: #333;
+    --footer-text: white;
 }
 
-/* Navigation Bar */
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #f1f1f1;
+    --nav-color: #1f1f1f;
+    --accent-color: #ff884d;
+    --accent-hover: #ff5722;
+    --card-bg: #1e1e1e;
+    --footer-bg: #000;
+    --footer-text: #ccc;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Navigation */
 nav {
-    background-color: #0077b6;
+    background-color: var(--nav-color);
     padding: 15px;
     text-align: center;
+    position: relative;
+    transition: background-color 0.3s;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 nav ul li {
@@ -27,77 +53,194 @@ nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 18px;
+    transition: color 0.3s;
 }
 
-/* Home Page */
+nav ul li a.active,
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Theme toggle */
+.theme-toggle {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-50%) scale(1.2);
+}
+
+/* Hero Section */
 .hero {
     text-align: center;
     background: url('https://source.unsplash.com/1600x900/?travel') no-repeat center center/cover;
-    color: white;
     padding: 100px 20px;
+    color: var(--text-color);
+    animation: fadeIn 1s ease-in;
 }
 
 .hero h1 {
     font-size: 3em;
+    margin-bottom: 10px;
 }
 
 .hero p {
-    font-size: 1.5em;
+    font-size: 1.3em;
+    margin-bottom: 20px;
 }
 
-.book-btn {
-    background-color: #ff5733;
-    color: white;
-    padding: 15px 30px;
+.search-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.search-box input {
+    padding: 10px;
+    width: 250px;
     border: none;
+    border-radius: 5px;
+}
+
+.search-box button {
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 1.2em;
+    transition: background-color 0.3s;
 }
 
-.book-btn:hover {
-    background-color: #c70039;
+.search-box button:hover {
+    background-color: var(--accent-hover);
 }
 
-/* Contact Page */
+.search-message {
+    margin-top: 15px;
+    font-size: 1.1em;
+}
+
+/* Recommendations */
+.recommendations {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.places {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.place {
+    background: var(--card-bg);
+    padding: 10px;
+    border-radius: 10px;
+    width: 200px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.place:hover {
+    transform: translateY(-5px);
+}
+
+.place img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.place p {
+    margin-top: 10px;
+}
+
+/* About & Contact */
+.about,
 .contact {
     text-align: center;
-    padding: 50px;
+    padding: 50px 20px;
 }
 
-.contact form {
+/* Form */
+form {
     max-width: 400px;
     margin: auto;
 }
 
-.contact label {
+label {
     display: block;
+    text-align: left;
     margin: 10px 0 5px;
 }
 
-.contact input,
-.contact textarea {
+input,
+textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
-.contact button {
-    background-color: #0077b6;
+button[type="submit"] {
+    background-color: var(--nav-color);
     color: white;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
 }
 
-.contact button:hover {
+button[type="submit"]:hover {
     background-color: #005b8e;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-bottom: 10px;
 }
 
 /* Footer */
 footer {
     text-align: center;
-    background-color: #333;
-    color: white;
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
     padding: 15px;
     margin-top: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 2em;
+    }
+    .places {
+        flex-direction: column;
+        align-items: center;
+    }
 }
