@@ -37,4 +37,4 @@ Follow these simple steps to run TravelBloom locally:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/travelbloom.git
+   git clone https://github.com/Srikara354/TravelBloom.git
